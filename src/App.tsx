@@ -1,12 +1,26 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Card } from './components/Card';
+import { UserList } from './components/UserList';
+import { IUser } from './types/types';
 
 function App() {
+  const [users, setUsers] = useState<IUser[]>([])
+  useEffect(() => {
+    fetchUsers()
+  }, [])
+  async function fetchUsers() {
+    try {
+      const response = await axios.get<IUser[]>('https://jsonplaceholder.typicode.com/users')
+      setUsers(response.data)
+    } catch (error) {
+      alert(error)
+    }
+  }
   return (
-    <Card width='120px' height='120px'>
-      <p style={{color: 'white'}}>heh</p>
-    </Card>
+    <UserList users={users} />
+    // <Card />
   );
 }
 

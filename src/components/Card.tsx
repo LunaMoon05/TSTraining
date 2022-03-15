@@ -1,17 +1,17 @@
 
-import React from 'react'
+import React, { FC } from 'react'
+import { useState } from 'react';
+import { IUser } from './../types/types';
+import { getRandom } from './../helpers/getRandom';
+import { useEffect } from 'react';
 
-interface CardProps {
-  width: string,
-  height: string,
-  children?: React.ReactChild | React.ReactNode
-}
-
-export const Card = (props: CardProps) => {
-  const {width, height, children} = props
+export const Card:FC<IUser> = props => {
+  const {id, name, email, address} = props
   return (
-    <div className='Card' style={{width, height, backgroundColor: 'red'}}>
-      {children}
+    <div style={{fontSize: 17}}>
+      <span style={{fontSize: 18, fontWeight: 'bold'}}>{id}.</span>
+      {name} проживает в городе {address.city} на улице {address.street}
+      Почта: {email}
     </div>
   )
 }

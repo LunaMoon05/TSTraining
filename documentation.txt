@@ -1,0 +1,15 @@
+Documentation of typescript for me
+
+Interface. Describes types of all props that we push in our component. Syntax:
+interface componentProps {
+  width: number,
+  color?: string, // variable with ?: not required variable
+  children: React.ReactChild | React.ReactNode
+}
+
+React.FunctionalComponent, or just FC
+FC - a simpler form of declaring FC React component in TS. Syntax:
+
+const Component: FC<componentProps> = (props) => {
+  return (...)
+}
