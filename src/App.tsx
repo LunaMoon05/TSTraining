@@ -1,26 +1,25 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { Card } from './components/Card';
-import { UserList } from './components/UserList';
-import { IUser } from './types/types';
+import { UsersPage } from './components/UsersPage';
+import { TodosPage } from './components/TodosPage';
+import { NavLink } from 'react-router-dom';
+import { EventsExample } from './components/EventsExample';
 
 function App() {
-  const [users, setUsers] = useState<IUser[]>([])
-  useEffect(() => {
-    fetchUsers()
-  }, [])
-  async function fetchUsers() {
-    try {
-      const response = await axios.get<IUser[]>('https://jsonplaceholder.typicode.com/users')
-      setUsers(response.data)
-    } catch (error) {
-      alert(error)
-    }
-  }
   return (
-    <UserList users={users} />
-    // <Card />
+    <BrowserRouter>
+      <div style={{marginBottom: 30}}>
+        <NavLink style={{marginRight: 10, fontSize: 20, fontWeight: 'bold'}} to='/users'>Пользователи</NavLink>
+        <NavLink style={{marginRight: 10, fontSize: 20, fontWeight: 'bold'}} to='/todos'>Список дел</NavLink>
+        <NavLink style={{marginRight: 10, fontSize: 20, fontWeight: 'bold'}} to='/events'>Events example</NavLink>
+      </div>
+      <Routes>
+        <Route path='/users' element={<UsersPage />} />
+        <Route path='/todos' element={<TodosPage />} />
+        <Route path='/events' element={<EventsExample />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
