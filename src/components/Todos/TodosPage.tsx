@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { ITodo } from '../types/types';
+import { ITodo } from '../../types/types';
 import { TodoList } from './TodoList';
 
 export const TodosPage = () => {

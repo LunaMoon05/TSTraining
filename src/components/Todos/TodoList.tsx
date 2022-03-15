@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import { ITodo } from '../types/types'
-import { List } from './List'
+import { ITodo } from '../../types/types'
+import { List } from '../Common/List'
 import { TodoItem } from './TodoItem'
 
 interface TodoListProps {

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { UserList } from './UserList'
-import { IUser } from './../types/types';
+import { IUser } from '../../types/types';
 
 export const UsersPage = () => {
   const [users, setUsers] = useState<IUser[]>([])

@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { UsersPage } from './components/UsersPage';
-import { TodosPage } from './components/TodosPage';
+import { UsersPage } from './components/Users/UsersPage';
+import { TodosPage } from './components/Todos/TodosPage';
 import { NavLink } from 'react-router-dom';
-import { EventsExample } from './components/EventsExample';
+import { EventsExample } from './components/EventsExample/EventsExample';
+import { UserItemPage } from './components/Users/UserItemPage';
+import { TodoItemPage } from './components/Todos/TodoItemPage';
 
 function App() {
   return (
@@ -16,7 +18,9 @@ function App() {
       </div>
       <Routes>
         <Route path='/users' element={<UsersPage />} />
+        <Route path='/users/:id' element={<UserItemPage />} />
         <Route path='/todos' element={<TodosPage />} />
+        <Route path='/todos/:id' element={<TodoItemPage />} />
         <Route path='/events' element={<EventsExample />} />
       </Routes>
     </BrowserRouter>
